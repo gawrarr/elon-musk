@@ -1,0 +1,45 @@
+content:
+ - name: docs
+   label: Documentation
+   type: collection
+   path: src/docs
+   view:
+    fields: [ title, image, date,  genre, publish ] 
+    primary: title
+    sort: [ date, title ]
+    default:
+      search: ''
+      sort: title
+      order: desc
+   
+   fields:
+    - {name: title, label: Title, type: string, required: true }
+    - { name: image, label: Image, type: image,  required: true }
+    - { name: publish, label: Publish, type: boolean }
+    - { name: genre, label: Genre, type: select, options: { values: [Anime, News, Sports, Kawai] },  required: true}
+    - { name: date, label: Date, type: date }
+    - { name: body, label: Body,  type: rich-text }
+ - name: anime
+   label: Anime
+   type: collection
+   path: src/anime
+   view:
+    fields: [ title, date, publish ] 
+   fields:
+    - {name: title, label: Title, type: string, required: true }
+    - { name: image, label: Image, type: image,  required: true }
+    - { name: publish, label: Publish, type: boolean,  }
+    - { name: date, label: Date, type: date }
+    - { name: body, label: Body,  type: rich-text }
+ - name: images
+   label: Images
+   path: src/image
+   type: collection
+   view:
+     fields: [ images, title ]
+   fields: 
+    - { name: title, label: Title, type: string, required: true }
+    - { name: images, label: Image, type: image, list: {  min: 1, max: 4 } }
+    
+  
+media: files
